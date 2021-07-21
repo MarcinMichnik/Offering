@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  offeringwebsite:
+    image: ${DOCKER_REGISTRY-}offeringwebsite
+    build:
+      context: .
+      dockerfile: OfferingWebsite/Dockerfile
