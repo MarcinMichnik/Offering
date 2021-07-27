@@ -1,19 +1,28 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OfferingWebsite.Models
 {
+    [Table("Offer")]
     public class Offer
     {
-        public Offer(string title, string owner)
+        [Key]
+        [Required]
+        public long Id { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+        [StringLength(50)]
+        public string Title { get; set; }
+
+        [StringLength(150)]
+        public string Description { get; set; }
+
+        public Offer(string title, string description)
         {
             Title = title;
-            Owner = owner;
+            Description = description;
         }
-
-        public long Id { get; set; }
-        public DateTime DateCreated { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Owner { get; set; }
     }
 }
