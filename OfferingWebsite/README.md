@@ -1,1 +1,1 @@
-﻿# Offering
+# Offering
