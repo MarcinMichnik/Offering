@@ -16,7 +16,7 @@ using OfferingWebsite.Services;
 
 namespace OfferingWebsite.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class UsersController : ControllerBase

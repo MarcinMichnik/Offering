@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace OfferingWebsite.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OffersController : ControllerBase
