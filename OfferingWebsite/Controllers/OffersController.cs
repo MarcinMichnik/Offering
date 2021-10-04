@@ -6,16 +6,19 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OfferingWebsite.Models;
+using OfferingWebsite.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OfferingWebsite.Controllers
 {
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OffersController : ControllerBase
     {
-        private readonly OfferContext _context;
+        private readonly DataContext _context;
 
-        public OffersController(OfferContext context)
+        public OffersController(DataContext context)
         {
             _context = context;
         }

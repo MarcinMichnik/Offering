@@ -10,13 +10,17 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using OfferingWebsite.Models;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.OpenApi.Models;
+using OfferingWebsite.Helpers;
+using OfferingWebsite.Services;
 
 namespace OfferingWebsite
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment _env;
+        public Startup(IWebHostEnvironment env, IConfiguration configuration)
         {
+            _env = env;
             Configuration = configuration;
         }
 
@@ -25,9 +29,11 @@ namespace OfferingWebsite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<OfferContext>();
-
-            services.AddControllersWithViews();
+            // use sql server db in production and sqlite db in development
+            if (_env.IsProduction())
+                services.AddDbContext<DataContext>();
+            else
+                services.AddDbContext<DataContext, SqliteDataContext>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -42,6 +48,9 @@ namespace OfferingWebsite
                 });
 
             services.AddControllers().AddNewtonsoftJson();
+
+            // configure DI for application services
+            services.AddScoped<IUserService, UserService>();
 
             services.AddSwaggerGen(c =>
             {
