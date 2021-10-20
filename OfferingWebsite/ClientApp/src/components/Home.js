@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-
+import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Nav } from 'reactstrap';
+import { Link } from 'react-router-dom';
 export class Home extends Component {
   static displayName = Home.name;
-  url = "/login";
 
   render () {
     return (
       <div>
             <h1>Homepage</h1>
-            <a href={this.url}>
-                <h3>Login</h3>
-            </a>
+            <Nav>
+                <NavLink tag={Link} className="font-weight-bold lead p-0" to="/login"><h3>Login</h3></NavLink>
+            </Nav>
       </div>
     );
   }
