@@ -8,9 +8,20 @@ export class Home extends Component {
     return (
       <div>
             <h1>Homepage</h1>
-            <Nav>
-                <NavLink tag={Link} className="font-weight-bold lead p-0" to="/login"><h3>Login</h3></NavLink>
-            </Nav>
+            <div class="d-flex justify-content-left font-weight-bold lead">
+                <Nav>
+                    <NavLink tag={Link} className="p-0" to="/login">
+                        <h3>Login</h3>
+                    </NavLink>
+                </Nav>
+                <h3 class="ml-1 mr-1">or</h3>
+                <Nav>
+                    <NavLink tag={Link} className="p-0" to="/register">
+                        <h3>Sign up</h3>
+                    </NavLink>
+                </Nav>
+            </div>
+
       </div>
     );
   }
